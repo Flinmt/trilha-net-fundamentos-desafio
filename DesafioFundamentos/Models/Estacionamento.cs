@@ -14,9 +14,30 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            // *IMPLEMENTADO!*
+            string placa;
+
+            do
+            {
+                Console.WriteLine("Digite a placa do veículo para estacionar:");
+                placa = Console.ReadLine().ToUpper();
+
+                if (placa.ToCharArray().Length > 7)
+                {
+                    Console.WriteLine("O numero de digitos da placa excede o valor maximo.");
+                    continue;
+                }
+
+                else if (char.IsDigit(placa.ToCharArray()[0]) || char.IsDigit(placa.ToCharArray()[1]) || char.IsDigit(placa.ToCharArray()[2]) || char.IsDigit(placa.ToCharArray()[4]) || char.IsLetter(placa.ToCharArray()[3]) || char.IsLetter(placa.ToCharArray()[5]) || char.IsLetter(placa.ToCharArray()[6]))
+                {
+                    Console.WriteLine("A Formatação da placa esta incorreta.");
+                    continue;
+                }
+
+                break;
+            } while (true);
+
+            veiculos.Add(placa);
         }
 
         public void RemoverVeiculo()
@@ -36,7 +57,7 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
-                decimal valorTotal = 0; 
+                decimal valorTotal = 0;
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
